@@ -12,7 +12,7 @@ A RUST telemetry project to refine and learn new skills.
 
 ## Goals
 
-- **Reliable:** data is acknowledged only after it is durably written to disk, and acknowledged data survives a crash.
+- **Reliable:** data is acknowledged only after it is durably written to disk, and acknowledged data survives a crash. The precise promise is defined in [ADR-0001](docs/adr/0001-delivery-guarantees.md).
 - **Resilient:** under overload or storage outages, the gateway rejects requests cleanly and recovers, instead of falling over.
 - **Efficient:** batching, compression and minimal copying on the hot path, with published benchmarks.
 
@@ -24,6 +24,13 @@ A RUST telemetry project to refine and learn new skills.
 | `crates/wal` | library | Write-ahead log (durable buffer) |
 | `crates/proto` | library | OTLP protobuf types |
 | `crates/loadgen` | binary | Load generator for benchmarks and crash tests |
+
+## Design decisions
+
+Architectural decisions are recorded as ADRs in [docs/adr](docs/adr/), with the
+context, the options rejected and the consequences accepted.
+
+- [ADR-0001: Delivery guarantees, scope and non-goals](docs/adr/0001-delivery-guarantees.md)
 
 ## Building
 
